@@ -1,0 +1,90 @@
+#chart3{
+    width: 50%;
+    height: 600px;
+    float: left;
+}
+#chart4{
+    width: 50%;
+    height: 600px;
+    float: left;
+}
+
+.my-button:hover {
+  background-color: mediumpurple;
+}
+#datas{
+    width: 50%;
+    height: 900px;
+    float: left;
+}
+table thead, table tr {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(230, 189, 189);
+}
+table {
+    width: 80%;
+    height: 50%;
+    margin: 50px auto;
+    left:100px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(230, 189, 189);
+}
+
+/* Padding and font style */
+table td, table th {
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 17px;
+    font-family: Verdana;
+    color: rgb(177, 106, 104);
+}
+
+/* Alternating background colors */
+table tr:nth-child(even) {
+background: rgb(238, 211, 210)
+}
+table tr:nth-child(odd) {
+background: #FFF
+}
+
+
+
+.my-tag label {
+        margin-left: 125px;
+}
+.my-tag input {
+	width: 170px;
+	height: 23px;
+}
+.my-tag input {
+  border: 1px solid black;
+  padding: 5px;
+  transition: border-color 0.3s; /* 添加过渡效果 */
+}
+.my-tag input:hover,
+.my-tag input:focus {
+	border-color: blue; /* 修改框线颜色为蓝色 */
+	border-width: 6px; /* 边框加粗 */
+}
+.my-tag input:focus {
+  outline: none; /* 去掉默认的聚焦边框 */
+}
+.my-button {
+    /*margin-left: 33%;*/
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  background-color: #1e90ff;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+    border-radius: 6px;
+}
+
+
+

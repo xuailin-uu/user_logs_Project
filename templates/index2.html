@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @keyframes glowing {
+            0% {
+                color: red;
+                text-shadow: 0 0 10px red;
+            }
+            50% {
+                color: gold;
+                text-shadow: 0 0 20px gold;
+            }
+            100% {
+                color: red;
+                text-shadow: 0 0 10px red;
+            }
+        }
+
+        .glowing-text {
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            animation: glowing 2s infinite;
+        }
+    </style>
+    <title>用户统计面板</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+    <style>
+        #datas {
+            width: 100%;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border-spacing: 0;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            color: #654ea3;
+        }
+
+        table th {
+            background-color: #f8bbd0;
+            color: #fff;
+        }
+
+        table tr:nth-child(even) {
+            background: rgb(238, 211, 210);
+        }
+
+        table tr:nth-child(odd) {
+            background: #FFF;
+        }
+
+        #chart3, #chart4 {
+            width: 100%;
+            height: 400px;
+            margin-top: 20px; /* 添加上边距 */
+            border-radius: 10px; /* 添加圆角边框 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+        }
+    </style>
+</head>
+<body>
+<div class="glowing-text">用户统计面板</div>
+</br>
+<div id="dashboard">
+    <div id="datas">
+        <table border="1">
+            <thead>
+            <tr>
+                <th>统计日期</th>
+                <th>当日用户数量</th>
+                <th>当周用户数量</th>
+                <th>当月用户数量</th>
+                <th>是否周末</th>
+                <th>是否月末</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in allData %}
+                <tr>
+                    <td>{{ item.dt }}</td>
+                    <td>{{ item.day_count }}</td>
+                    <td>{{ item.wk_count }}</td>
+                    <td>{{ item.mn_count }}</td>
+                    <td>{{ item.is_weekend }}</td>
+                    <td>{{ item.is_monthend }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div id="charts">
+        <div id="chart3" class="chart-container"></div>
+        <div id="chart4" class="chart-container"></div>
+    </div>
+</div>
+
+{% autoescape false %}
+<script>
+    // ECharts 图表配置
+   var chart3 = echarts.init(document.getElementById("chart3"));
+var option3 = {
+    title: {
+        text: "2022年月用户数量统计",
+        x: 'center'
+    },
+    tooltip: {},
+    xAxis: {
+        type: 'category',
+        name: '月份',
+        data: {{ keys3 }}
+    },
+    yAxis: {
+        name: '用户数量',
+        type: 'value'
+    },
+    series: [{
+        data: {{ values3 }},
+        itemStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    { offset: 0, color: '#36c' },    // 渐变起始颜色
+                    { offset: 1, color: '#69c' }     // 渐变结束颜色
+                ]),
+                label: { show: true },
+            }
+        },
+        type: 'bar'
+    }]
+};
+chart3.setOption(option3);
+
+var chart4 = echarts.init(document.getElementById("chart4"));
+var option4 = {
+    title: {
+        text: "2022-2023年用户数量统计",
+        x: 'center'
+    },
+    tooltip: {},
+    xAxis: {
+        type: 'category',
+        name: '年份',
+        data: {{ keys4 }}
+    },
+    yAxis: {
+        name: '用户数量',
+        type: 'value'
+    },
+    series: [{
+        data: {{ values4 }},
+        itemStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    { offset: 0, color: '#36c' },    // 渐变起始颜色
+                    { offset: 1, color: '#69c' }     // 渐变结束颜色
+                ]),
+                label: { show: true },
+            }
+        },
+        type: 'bar'
+    }]
+};
+chart4.setOption(option4);
+</script>
+{% endautoescape %}
+</body>
+</html>

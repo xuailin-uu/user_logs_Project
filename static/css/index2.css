@@ -1,0 +1,95 @@
+#chart3, #chart4 {
+    width: 100%;
+    height: 400px; /* 调整高度 */
+}
+
+#datas {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px; /* 调整底部边距 */
+}
+
+table thead,
+table tr {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(230, 189, 189);
+}
+
+table {
+    width: 100%;
+    margin: 50px auto;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(230, 189, 189);
+}
+
+/* Padding and font style */
+table td,
+table th {
+    padding: 5px 10px;
+    font-size: 22px;
+    font-family: Verdana;
+    color: rgb(177, 106, 104);
+}
+
+/* Alternating background colors */
+table tr:nth-child(even) {
+    background: rgb(238, 211, 210)
+}
+
+table tr:nth-child(odd) {
+    background: #FFF
+}
+#header {
+    text-align: center;
+}
+#charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.chart-container {
+  flex: 1;
+  margin: 10px;
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+table {
+    width: 100%;
+    margin: 50px auto;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(230, 189, 189);
+    animation: gradientBackground 5s infinite alternate; /* 根据需要调整持续时间 */
+}
+
+/* 交替的背景颜色 */
+table tr:nth-child(even) {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+table tr:nth-child(odd) {
+    background: linear-gradient(135deg, #fda085 0%, #f6d365 100%);
+}
+
+
+/* 添加渐变效果到图例 */
+.echarts-legend-container {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    padding: 10px;
+    border-radius: 10px;
+}
+

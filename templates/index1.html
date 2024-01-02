@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>查询按钮</title>
+  </head>
+  <body>
+    <form action="/" method="post">
+      <input type="submit" value="查询">
+    </form>
+    {% if data %}
+      <table>
+        <tr>
+          <th>日期</th>
+          <th>当日用户数</th>
+          <th>当周用户数</th>
+          <th>当月用户数</th>
+        </tr>
+        {% for row in data %}
+          <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <!-- 显示更多的字段 -->
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+  </body>
+</html>
